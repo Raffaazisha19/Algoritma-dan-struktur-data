@@ -1,0 +1,52 @@
+ALGORITMA Hitung_Pembayaran_SPP
+
+DEKLARASI
+    TIPE mhs : RECORD <
+        nama : STRING
+        nim : STRING
+        jurusan : STRING
+        sks : INTEGER
+        program : INTEGER
+    >
+    bayar : ARRAY [0..1] OF mhs
+    bts, var, tetap, i : INTEGER
+
+DESKRIPSI
+    UNTUK i DARI 0 SAMPAI 1 LAKUKAN
+        TULIS "Nama mhs = "
+        BACA bayar[i].nama
+        TULIS "Nim = "
+        BACA bayar[i].nim
+        TULIS "Jurusan (TI, PTK) = "
+        BACA bayar[i].jurusan
+
+        LABEL input_program
+        TULIS "Program(1=D3, 2=s1) = "
+        BACA bayar[i].program
+
+        JIKA bayar[i].program < 1 ATAU bayar[i].program > 2 MAKA
+            TULIS "Program tidak sesuai"
+            MENUJU input_program
+        AKHIR JIKA
+
+        TULIS "Jumlah sks = "
+        BACA bayar[i].sks
+
+        JIKA bayar[i].program = 1 MAKA
+            tetap = 500000
+            var = bayar[i].sks x 25000
+        SEBALIKNYA JIKA bayar[i].program = 2 MAKA
+            tetap = 750000
+            var = bayar[i].sks x 50000
+        AKHIR JIKA
+
+        TULIS "Output"
+        TULIS "Nama Mahasiswa = ", bayar[i].nama
+        TULIS "NIM = ", bayar[i].nim
+        TULIS "Jurusan = ", bayar[i].jurusan
+        TULIS "Program = ", bayar[i].program
+        TULIS "Jumlah sks = ", bayar[i].sks
+        TULIS "SPP tetap = ", tetap
+        TULIS "SPP variabel = ", var
+    AKHIR UNTUK
+    
